@@ -1,0 +1,17 @@
+eureka:
+  instance:
+    hostname: 192.168.100.84
+  client:
+    service-url:
+      defaultZone: http://192.168.100.84:8761/eureka
+name:
+  value: laggo
+spring:
+  cloud:
+    config:
+      override-system-properties: false
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0

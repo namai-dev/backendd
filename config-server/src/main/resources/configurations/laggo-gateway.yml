@@ -1,0 +1,41 @@
+server:
+  host: 192.168.100.84
+  port: 8222
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: customer-service
+          uri: lb:http://CUSTOMER-SERVICE
+          predicates:
+            - Path=/api/v1/customers/**
+        - id: order-service
+          uri: lb:http://ORDER-SERVICE
+          predicates:
+            - Path=/api/v1/orders/**
+        - id: order-lines-service
+          uri: lb:http://ORDER-SERVICE
+          predicates:
+            - Path=/api/v1/order-lines/**
+        - id: product-service
+          uri: lb:http://PRODUCT-SERVICE
+          predicates:
+            - Path=/api/v1/products/**
+        - id: payment-service
+          uri: lb:http://PAYMENT-SERVICE
+          predicates:
+            - Path=/api/v1/payments/**
+        - id: user-service
+          uri: lb:http://USER-SERVICE
+          predicates:
+            - Path=/api/v1/user/**
+          filters:
+            - AuthenticationFilter
+
+        - id: auth-server
+          uri: lb:http://AUTH-SERVER
+          predicates:
+            - Path=/api/v1/auth/**

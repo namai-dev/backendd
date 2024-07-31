@@ -1,0 +1,14 @@
+server:
+  host: 192.168.100.84
+  port: 8091
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/ecommerse_ms
+    username: postrgres
+    password: rajnamai
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
